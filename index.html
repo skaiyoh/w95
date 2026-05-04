@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>&gt;0x0&lt;</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="desktop">
+    <div class="icons">
+        <a href="#" onclick="showMyComputer()">
+            <div class="icon">
+                <img src="assets\myComputer_32x32.svg">
+            </div>
+            <div class="iconLabel">My Computer</div>
+        </a>
+        <br>
+        <a href="#" onclick="showHelpFolder()">
+            <div class="icon">
+                <img src="assets\FolderOpen.svg">
+            </div>
+            <div class="iconLabel">Help</div>
+        </a>
+        <br>
+        <a href="#" onclick="showRecycleBin()">
+            <div class="icon">
+                <img src="assets\RecycleEmpty.svg">
+            </div>
+            <div class="iconLabel">Recycle Bin</div>
+        </a>
+    </div>
+    <div class="window" id="myComputer">
+        <div class="windowHeader">
+            <div class="popupImage">
+                <img src="assets\myComputer_32x32.svg">
+            </div>
+            <div class="popupTitle">My Computer</div>
+            <div class="popupActionButtons">
+                <a href="#" onclick="hideMyComputer()">
+                    <div class="minimize"></div>
+                </a>
+                <a>
+                    <div class="fullscreen"></div>
+                </a>
+                <a href="#" onclick="closeMyComputer()">
+                    <div class="closePopup">X</div>
+                </a>
+            </div>
+        </div>
+        <div class="selectBar">
+            <div><span>F</span>ile</div>
+            <div><span>E</span>dit</div>
+            <div><span>V</span>iew</div>
+            <div><span>H</span>elp</div>
+        </div>
+        <div class="folders">
+            <div class="line-1">
+                <div class="folderObject">
+                    <img src="assets\ReaderOpened.svg">
+                    <div>Removable Disk (A:)</div>
+                </div>
+                <div class="folderObject">
+                    <img src="assets\ReaderClosed.svg">
+                    <div>Windows 95 (C:)</div>
+                </div>
+            </div>
+            <div class="line-2">
+                <div class="folderObject">
+                    <img src="assets\ControlPanel.svg">
+                    <div>Control Panel</div>
+                </div>
+                <div class="folderObject">
+                    <img src="assets\FolderPrinter.svg">
+                    <div>Printers</div>
+                </div>
+            </div>
+        </div>
+        <div class="objectsDisplayBox">
+            <div class="objectText">4 object(s)</div>
+            <div class="byteText"></div>
+        </div>
+    </div>
+    <div class="window" id="helpFolder">
+        <div class="selectBarPopups">
+            <div id="filePopupHelp">
+                <div class="selectOption unavailable">Create <span>S</span>hortcut</div>
+                <div class="selectOption unavailable"><span>D</span>elete</div>
+                <div class="selectOption unavailable">Rena<span>m</span>e</div>
+                <div class="selectOption unavailable">P<span>r</span>operties</div>
+                <div class="divider"></div>
+                <div class="selectOption close"><span>C</span>lose</div>
+            </div>
+            <div id="editPopupHelp">
+                <div class="selectOption unavailable"><span>U</span>ndo</div>
+                <div class="divider"></div>
+                <div class="selectOption unavailable">Cu<span>t</span></div>
+                <div class="selectOption unavailable"><span>C</span>opy</div>
+                <div class="selectOption unavailable"><span>P</span>aste</div>
+                <div class="selectOption unavailable">Paste <span>S</span>hortcut</div>
+                <div class="divider"></div>
+                <div class="selectOption">Select <span>A</span>ll</div>
+                <div class="selectOption"><span>I</span>nvert Selection</div>
+            </div>
+            <div id="viewPopupHelp">
+                <div class="selectOption"><span>T</span>oolbar</div>
+                <div class="selectOption">Status <span>B</span>ar</div>
+                <div class="divider"></div>
+                <div class="selectOption">Lar<span>g</span>e Icons</div>
+                <div class="selectOption">S<span>m</span>all Icons</div>
+                <div class="selectOption"><span>L</span>ist</div>
+                <div class="selectOption"><span>D</span>etails</div>
+                <div class="divider"></div>
+                <div class="selectOption">Arrange <span>I</span>cons</div>
+                <div class="selectOption unavailable">Lin<span>e</span> up Icons</div>
+                <div class="divider"></div>
+                <div class="selectOption"><span>R</span>efresh</div>
+                <div class="selectOption"><span>O</span>ptions...</div>
+            </div>
+            <div id="helpPopupHelp">
+                <div class="selectOption"><span>H</span>elp Topics</div>
+                <div class="divider"></div>
+                <div class="selectOption"><span>A</span>bout Windows 95</div>
+            </div>
+        </div>
+        <div class="windowHeader">
+            <div class="popupImage">
+                <img src="assets\FolderOpen.svg">
+            </div>
+            <div class="popupTitle">Help</div>
+            <div class="popupActionButtons">
+                <a href="#" onclick="hideHelpFolder()">
+                    <div class="minimize"></div>
+                </a>
+                <a>
+                    <div class="fullscreen"></div>
+                </a>
+                <a href="#" onclick="closeHelpFolder()">
+                    <div class="closePopup">X</div>
+                </a>
+            </div>
+        </div>
+        <div class="selectBar">
+                <div class="selectOption" onclick="toggleFilePopupHelp.call(this)"><span>F</span>ile</div>
+                <div class="selectOption" onclick="toggleEditPopupHelp.call(this)"><span>E</span>dit</div>
+                <div class="selectOption" onclick="toggleViewPopupHelp.call(this)"><span>V</span>iew</div>
+                <div class="selectOption" onclick="toggleHelpPopupHelp.call(this)"><span>H</span>elp</div>
+            </div>
+        <div class="folders">
+            <div class="line-1">
+                <div class="folderObject">
+                    <img src="assets\Notepad.svg">
+                    <div>Help</div>
+                </div>
+                <div class="folderObject">
+                    <img src="assets\Notepad.svg">
+                    <div>About</div>
+                </div>
+                <div class="folderObject">
+                    <img src="assets\Notepad.svg">
+                    <div>Contact Info</div>
+                </div>
+            </div>
+        </div>
+        <div class="objectsDisplayBox">
+            <div class="objectText">3 object(s)</div>
+            <div class="byteText"></div>
+        </div>
+    </div>
+    <div class="window" id="recycleBin">
+        <div class="selectBarPopups">
+            <div id="filePopupBin">
+                <div class="selectOption unavailable">Create <span>S</span>hortcut</div>
+                <div class="selectOption unavailable"><span>D</span>elete</div>
+                <div class="selectOption unavailable">Rena<span>m</span>e</div>
+                <div class="selectOption unavailable">P<span>r</span>operties</div>
+                <div class="divider"></div>
+                <div class="selectOption close"><span>C</span>lose</div>
+            </div>
+            <div id="editPopupBin">
+                <div class="selectOption unavailable"><span>U</span>ndo</div>
+                <div class="divider"></div>
+                <div class="selectOption unavailable">Cu<span>t</span></div>
+                <div class="selectOption unavailable"><span>C</span>opy</div>
+                <div class="selectOption unavailable"><span>P</span>aste</div>
+                <div class="selectOption unavailable">Paste <span>S</span>hortcut</div>
+                <div class="divider"></div>
+                <div class="selectOption">Select <span>A</span>ll</div>
+                <div class="selectOption"><span>I</span>nvert Selection</div>
+            </div>
+            <div id="viewPopupBin">
+                <div class="selectOption"><span>T</span>oolbar</div>
+                <div class="selectOption">Status <span>B</span>ar</div>
+                <div class="divider"></div>
+                <div class="selectOption">Lar<span>g</span>e Icons</div>
+                <div class="selectOption">S<span>m</span>all Icons</div>
+                <div class="selectOption"><span>L</span>ist</div>
+                <div class="selectOption"><span>D</span>etails</div>
+                <div class="divider"></div>
+                <div class="selectOption">Arrange <span>I</span>cons</div>
+                <div class="selectOption unavailable">Lin<span>e</span> up Icons</div>
+                <div class="divider"></div>
+                <div class="selectOption"><span>R</span>efresh</div>
+                <div class="selectOption"><span>O</span>ptions...</div>
+            </div>
+            <div id="helpPopupBin">
+                <div class="selectOption"><span>H</span>elp Topics</div>
+                <div class="divider"></div>
+                <div class="selectOption"><span>A</span>bout Windows 95</div>
+            </div>
+        </div>
+        <div class="windowWrapper">
+            <div class="windowHeader">
+                <div class="popupImage">
+                    <img src="assets\RecycleEmpty.svg">
+                </div>
+                <div class="popupTitle">Recycle Bin</div>
+                <div class="popupActionButtons">
+                    <a href="#" onclick="hideRecycleBin()">
+                        <div class="minimize"></div>
+                    </a>
+                    <a>
+                        <div class="fullscreen"></div>
+                    </a>
+                    <a href="#" onclick="closeRecycleBin()">
+                        <div class="closePopup">X</div>
+                    </a>
+                </div>
+            </div>
+            <div class="selectBar">
+                <div class="selectOption" onclick="toggleFilePopupBin.call(this)"><span>F</span>ile</div>
+                <div class="selectOption" onclick="toggleEditPopupBin.call(this)"><span>E</span>dit</div>
+                <div class="selectOption" onclick="toggleViewPopupBin.call(this)"><span>V</span>iew</div>
+                <div class="selectOption" onclick="toggleHelpPopupBin.call(this)"><span>H</span>elp</div>
+            </div>
+            <div class="folders">
+                <div class="recycleBinObjects">
+                    <div class="sortingBar">
+                        <div>Name</div>
+                        <div>Original Location</div>
+                        <div>Date Deleted</div>
+                        <div>Type</div>
+                        <div>Size</div>
+                    </div>
+                    <div class="recycledItems"></div>
+                    <div class="recycleScrollBar"></div>
+                    <div class="objectsDisplay"></div>
+                </div>
+            </div>
+            <div class="objectsDisplayBox">
+                <div class="objectText">0 object(s)</div>
+                <div class="byteText">0 bytes</div>
+            </div>
+        </div>
+    </div>
+    <div class="startBar">
+        <div id="startButton" class="startButton">
+            <div class="logo">
+                <img src="assets\logo_32x32.svg" draggable="false">
+            </div>
+            <div class="startText">Start</div>
+        </div>
+        <!-- <div class="startApps">
+            <div>Y</div>
+            <div>I</div>
+            <div>K</div>
+            <div>E</div>
+        </div> -->
+        <div class="activeApps">
+            <div id="startBarMyComputer"></div>
+            <div id="startBarRecycleBin"></div>
+        </div>
+        <div class="dateBox">
+            <div class="speakerIcon">
+                <img src="assets\speakerIcon_32x32.svg">
+            </div>
+            <div class="display-time"></div>
+        </div>
+    </div>
+    <div id="startPopup" class="startBarPopup" style="display: none;">
+        <div class="w95VertBar"></div>
+        <div class="startPopupBtn">
+            <img src="assets\Programs.svg">
+            <div><span>P</span>rograms</div>
+        </div>
+        <div class="startPopupBtn">
+            <img src="assets\Documents.svg">
+            <div><span>D</span>ocuments</div>
+        </div>
+        <div class="startPopupBtn">
+            <img src="assets\Settings.svg">
+            <div><span>S</span>ettings</div>
+        </div>
+        <div class="startPopupBtn" id="findFile">
+            <img class="shrinkImg" src="assets\FileFind.svg">
+            <div><span>F</span>ind</div>
+        </div>
+        <div class="startPopupBtn">
+            <img src="assets\HelpBook.svg">
+            <div><span>H</span>elp</div>
+        </div>
+        <div class="startPopupBtn">
+            <img src="assets\LoaderBat_32x32.svg">
+            <div><span>R</span>un...</div>
+        </div>
+        <div class="divider"></div>
+        <div class="startPopupBtn">
+            <img src="assets\computer_32x32.svg">
+            <div>Sh<span>u</span>t Down...</div>
+        </div>
+    </div>
+  </div>
+  <script src="script.js"></script> 
+</body>
+</html>
