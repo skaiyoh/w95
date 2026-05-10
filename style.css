@@ -55,11 +55,10 @@ div span {
 div span::after {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 0px;
     bottom: 3px;
-    border-bottom: 1px solid currentColor; 
-    width: 8px;
-    transform: translateX(-50%);
+    border-bottom: 1px solid currentColor;
+    width: 85%;
 }
 
 .block {
