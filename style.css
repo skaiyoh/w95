@@ -218,6 +218,9 @@ div span::after {
 }
 
 .popupImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 16px;
     height: 16px;
     margin-left: 5px;
@@ -225,6 +228,7 @@ div span::after {
 }
 
 .popupImage > img {
+    display: block;
     width: 16px;
     height: 16px;
 }
