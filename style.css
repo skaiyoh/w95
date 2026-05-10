@@ -592,7 +592,7 @@ div span::after {
     border-right: 1px solid black;
     box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
     padding-left: 8px;
-    padding-top: 5pt;
+    padding-top: 3pt;
     padding-right: 20px;
     width: 140px;
 }
