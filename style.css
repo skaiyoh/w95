@@ -300,6 +300,29 @@ div span::after {
     line-height: 1;
 }
 
+.popupActionButtons > a:active > div {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid var(--border--white);
+    border-right: 1px solid var(--border--white);
+    box-shadow: inset 1px 1px 0 0 var(--border--grey);
+}
+
+.popupActionButtons > a:active .minimize::before {
+    bottom: 1px;
+    left: 3px;
+}
+
+.popupActionButtons > a:active .fullscreen::before {
+    top: 3px;
+    left: 3px;
+}
+
+.popupActionButtons > a:active .closePopup {
+    padding-top: 3px;
+    padding-left: 2px;
+}
+
 .objectsDisplayBox {
     display: flex;
     align-items: center;
@@ -401,6 +424,15 @@ div span::after {
     border-right: 1px solid black;
     box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
     cursor: pointer;
+}
+
+.startButton:active {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid var(--border--white);
+    border-right: 1px solid var(--border--white);
+    box-shadow: inset 1px 1px 0 0 grey;
+    padding: 5px 3px 3px 5px;
 }
 
 .startText {
