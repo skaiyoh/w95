@@ -56,7 +56,7 @@ div span::after {
     content: '';
     position: absolute;
     left: 50%;
-    bottom: 0px;
+    bottom: 3px;
     border-bottom: 1px solid currentColor; 
     width: 8px;
     transform: translateX(-50%);
@@ -268,12 +268,14 @@ div span::after {
 
 .closePopup {
     display: flex;
+    align-items: center;
     justify-content: center;
     padding-top: 1px;
     padding-left: 1px;
     margin-left: 5px;
     margin-right: 4px;
     font-size: 0.9em;
+    line-height: 1;
 }
 
 .objectsDisplayBox {
