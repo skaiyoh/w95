@@ -331,6 +331,9 @@ function dragElement(elmnt) {
 
   function onPointerDown(e) {
     if (e.button !== undefined && e.button !== 0) return;
+    // Don't hijack pointerdown on the header's action buttons — preventDefault here
+    // suppresses the synthesized mouse click and breaks minimize/close on real mice.
+    if (e.target.closest('.popupActionButtons')) return;
     e.preventDefault();
     startX = e.clientX;
     startY = e.clientY;
