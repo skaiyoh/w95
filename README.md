@@ -8,7 +8,7 @@ A Windows 95-themed interactive portfolio built with vanilla HTML, CSS, and Java
 - **Draggable Windows** - Click and drag windows by their title bars, with proper z-index stacking
 - **Start Menu** - Functional Start button with Programs, Documents, Settings, Find, Help, Run, and Shut Down
 - **Taskbar** - Active app indicators and a live system clock
-- **Menu Bars** - File, Edit, View, and Help dropdown menus with authentic styling
+- **Menu Bars** - File, Edit, View, and Help dropdown menus with authentic styling and outside-click dismissal
 - **Pixel-Perfect Styling** - MS Sans Serif font, classic color palette, beveled borders, and sprite-based UI elements
 
 ## Tech Stack

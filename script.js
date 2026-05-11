@@ -173,6 +173,15 @@ function togglePopup(popupElement, context) {
   }
 }
 
+function closePopupsOnOutsidePointerDown(event) {
+  if (!document.querySelector('.selectOptionActive')) return;
+  if (!(event.target instanceof Element)) return;
+  if (event.target.closest('.selectOption[data-popup], .selectBarPopups')) return;
+  resetPopupsAndOptions();
+}
+
+document.addEventListener('pointerdown', closePopupsOnOutsidePointerDown);
+
 document.querySelectorAll('.selectBar').forEach(bar => {
   bar.addEventListener('click', (e) => {
     const trigger = e.target.closest('.selectOption[data-popup]');
