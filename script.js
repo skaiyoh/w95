@@ -94,17 +94,88 @@ const WINDOW_REGISTRY = {
   recycleBin: { defaultTop: '25%', defaultLeft: '55%' },
 };
 
+const MINIMIZED_WINDOWS = new Set();
+const ANIMATING_WINDOWS = new Set();
+
+function domRectToZoom(r) {
+  return { x: r.left, y: r.top, w: r.width, h: r.height };
+}
+
+function getIconRectForWindow(id) {
+  const icon = document.querySelector(
+    'a[data-action="show-window"][data-window="' + id + '"]'
+  );
+  if (!icon) return null;
+  return domRectToZoom(icon.getBoundingClientRect());
+}
+
+function getTaskbarRectForWindow(id) {
+  const slot = document.getElementById(
+    'startBar' + id.charAt(0).toUpperCase() + id.slice(1)
+  );
+  if (slot) {
+    const r = slot.getBoundingClientRect();
+    if (r.width > 0 && r.height > 0) return domRectToZoom(r);
+  }
+  return { x: 80, y: window.innerHeight - 32, w: 140, h: 22 };
+}
+
+function measureWindowRect(el) {
+  const prevDisplay = el.style.display;
+  const prevVisibility = el.style.visibility;
+  try {
+    el.style.visibility = 'hidden';
+    el.style.display = 'flex';
+    return domRectToZoom(el.getBoundingClientRect());
+  } finally {
+    el.style.display = prevDisplay;
+    el.style.visibility = prevVisibility;
+  }
+}
+
+function runZoom(src, dst) {
+  if (!window.W95Zoom || !src || !dst) return Promise.resolve();
+  return window.W95Zoom.run(src, dst);
+}
+
 function showWindowById(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  showWindow(el);
+  if (el.style.display && el.style.display !== 'none') {
+    showWindow(el);
+    return;
+  }
+  if (ANIMATING_WINDOWS.has(id)) return;
+
+  const src = MINIMIZED_WINDOWS.has(id)
+    ? getTaskbarRectForWindow(id)
+    : getIconRectForWindow(id);
+  const dst = measureWindowRect(el);
+
+  ANIMATING_WINDOWS.add(id);
+  runZoom(src, dst).then(() => {
+    showWindow(el);
+    MINIMIZED_WINDOWS.delete(id);
+    ANIMATING_WINDOWS.delete(id);
+  });
 }
 
 function hideWindowById(id) {
   resetPopupsAndOptions();
   const el = document.getElementById(id);
   if (!el) return;
+  if (!el.style.display || el.style.display === 'none') return;
+  if (ANIMATING_WINDOWS.has(id)) return;
+
+  const src = domRectToZoom(el.getBoundingClientRect());
+  const dst = getTaskbarRectForWindow(id);
   el.style.display = 'none';
+
+  ANIMATING_WINDOWS.add(id);
+  runZoom(src, dst).then(() => {
+    MINIMIZED_WINDOWS.add(id);
+    ANIMATING_WINDOWS.delete(id);
+  });
 }
 
 function closeWindowById(id) {
@@ -112,6 +183,7 @@ function closeWindowById(id) {
   const el = document.getElementById(id);
   if (!el) return;
   el.style.display = 'none';
+  MINIMIZED_WINDOWS.delete(id);
   const config = WINDOW_REGISTRY[id];
   if (config) {
     el.style.top = config.defaultTop;

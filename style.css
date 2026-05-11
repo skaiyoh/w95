@@ -735,3 +735,20 @@ div span::after {
     margin-right: 13px;
 }
 
+.w95-zoom-frame {
+    position: fixed;
+    border: 1px solid white;
+    box-sizing: border-box;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    z-index: 200;
+}
+
+.w95-zoom-blocker {
+    position: fixed;
+    inset: 0;
+    z-index: 199;
+    cursor: wait;
+    background: transparent;
+}
+
