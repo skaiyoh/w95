@@ -8,21 +8,21 @@
 <body>
   <div class="desktop">
     <div class="icons">
-        <a href="#" onclick="showMyComputer()">
+        <a href="#" data-action="show-window" data-window="myComputer">
             <div class="icon">
                 <img src="assets\myComputer_32x32.svg">
             </div>
             <div class="iconLabel">My Computer</div>
         </a>
         <br>
-        <a href="#" onclick="showHelpFolder()">
+        <a href="#" data-action="show-window" data-window="helpFolder">
             <div class="icon">
                 <img src="assets\FolderOpen.svg">
             </div>
             <div class="iconLabel">Help</div>
         </a>
         <br>
-        <a href="#" onclick="showRecycleBin()">
+        <a href="#" data-action="show-window" data-window="recycleBin">
             <div class="icon">
                 <img src="assets\RecycleEmpty.svg">
             </div>
@@ -36,13 +36,13 @@
             </div>
             <div class="popupTitle">My Computer</div>
             <div class="popupActionButtons">
-                <a href="#" onclick="hideMyComputer()">
+                <a href="#" data-action="hide-window" data-window="myComputer">
                     <div class="minimize"></div>
                 </a>
                 <a>
                     <div class="fullscreen"></div>
                 </a>
-                <a href="#" onclick="closeMyComputer()">
+                <a href="#" data-action="close-window" data-window="myComputer">
                     <div class="closePopup">X</div>
                 </a>
             </div>
@@ -128,22 +128,22 @@
             </div>
             <div class="popupTitle">Help</div>
             <div class="popupActionButtons">
-                <a href="#" onclick="hideHelpFolder()">
+                <a href="#" data-action="hide-window" data-window="helpFolder">
                     <div class="minimize"></div>
                 </a>
                 <a>
                     <div class="fullscreen"></div>
                 </a>
-                <a href="#" onclick="closeHelpFolder()">
+                <a href="#" data-action="close-window" data-window="helpFolder">
                     <div class="closePopup">X</div>
                 </a>
             </div>
         </div>
         <div class="selectBar">
-                <div class="selectOption" onclick="toggleFilePopupHelp.call(this)"><span>F</span>ile</div>
-                <div class="selectOption" onclick="toggleEditPopupHelp.call(this)"><span>E</span>dit</div>
-                <div class="selectOption" onclick="toggleViewPopupHelp.call(this)"><span>V</span>iew</div>
-                <div class="selectOption" onclick="toggleHelpPopupHelp.call(this)"><span>H</span>elp</div>
+                <div class="selectOption" data-popup="filePopupHelp"><span>F</span>ile</div>
+                <div class="selectOption" data-popup="editPopupHelp"><span>E</span>dit</div>
+                <div class="selectOption" data-popup="viewPopupHelp"><span>V</span>iew</div>
+                <div class="selectOption" data-popup="helpPopupHelp"><span>H</span>elp</div>
             </div>
         <div class="folders">
             <div class="line-1">
@@ -215,22 +215,22 @@
                 </div>
                 <div class="popupTitle">Recycle Bin</div>
                 <div class="popupActionButtons">
-                    <a href="#" onclick="hideRecycleBin()">
+                    <a href="#" data-action="hide-window" data-window="recycleBin">
                         <div class="minimize"></div>
                     </a>
                     <a>
                         <div class="fullscreen"></div>
                     </a>
-                    <a href="#" onclick="closeRecycleBin()">
+                    <a href="#" data-action="close-window" data-window="recycleBin">
                         <div class="closePopup">X</div>
                     </a>
                 </div>
             </div>
             <div class="selectBar">
-                <div class="selectOption" onclick="toggleFilePopupBin.call(this)"><span>F</span>ile</div>
-                <div class="selectOption" onclick="toggleEditPopupBin.call(this)"><span>E</span>dit</div>
-                <div class="selectOption" onclick="toggleViewPopupBin.call(this)"><span>V</span>iew</div>
-                <div class="selectOption" onclick="toggleHelpPopupBin.call(this)"><span>H</span>elp</div>
+                <div class="selectOption" data-popup="filePopupBin"><span>F</span>ile</div>
+                <div class="selectOption" data-popup="editPopupBin"><span>E</span>dit</div>
+                <div class="selectOption" data-popup="viewPopupBin"><span>V</span>iew</div>
+                <div class="selectOption" data-popup="helpPopupBin"><span>H</span>elp</div>
             </div>
             <div class="folders">
                 <div class="recycleBinObjects">

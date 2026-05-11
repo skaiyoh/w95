@@ -6,9 +6,7 @@ function showTime() {
   let time = new Date();
   let hours = time.getHours().toString().padStart(2, '0');
   let minutes = time.getMinutes().toString().padStart(2, '0');
-  let ampm = hours >= 12 ? 'PM' : 'AM';
 
-  // Convert hours to 12-hour format
   hours = (hours % 12) || 12;
 
   displayTime.innerText = `${hours}:${minutes}`;
@@ -61,82 +59,81 @@ var myComputerElement = document.getElementById("myComputer");
 var recycleBinElement = document.getElementById("recycleBin");
 var helpFolderElement = document.getElementById("helpFolder");
 
-// Initialize variable to store the last selected window
-let lastSelectedWindow = null;
+// Taskbar sits at z-index 20 (style.css). Keep windows strictly below that.
+const WINDOW_Z_MAX = 19;
 
-// Global variable to store the current highest z-index
-let highestZIndex = 1;
+function focusWindow(target) {
+    const others = Array.from(windows).filter(w => w !== target);
+    others
+      .map(el => ({ el, z: parseInt(el.style.zIndex, 10) || 0 }))
+      .sort((a, b) => a.z - b.z)
+      .forEach((entry, i) => { entry.el.style.zIndex = i + 1; });
+    target.style.zIndex = WINDOW_Z_MAX;
+}
 
-// Function to update z-index on mousedown
 function updateZIndex(event) {
-    // Get the clicked window
-    const clickedWindow = event.currentTarget;
-
-    // Set the z-index of the clicked window to the highest value + 1
-    clickedWindow.style.zIndex = highestZIndex++;
-
-    // Update last selected window
-    lastSelectedWindow = clickedWindow;
+    focusWindow(event.currentTarget);
 }
 
-// Function to show a specific window and bring it to the front
 function showWindow(windowElement) {
-    // Set display property to "flex"
     windowElement.style.display = "flex";
-
-    // Bring the window to the front by updating z-index
-    updateZIndex({ currentTarget: windowElement });
+    focusWindow(windowElement);
 }
 
-// Add mousedown event listener to each window
-windows.forEach(window => {
-    window.addEventListener('mousedown', updateZIndex);
-
-    // Initialize z-index for each window in order
-    window.style.zIndex = highestZIndex++;
+windows.forEach((win, i) => {
+    // pointerdown, not mousedown: the header's drag handler calls preventDefault()
+    // which suppresses the compatibility mousedown and would otherwise skip focus.
+    win.addEventListener('pointerdown', updateZIndex);
+    win.style.zIndex = i + 1;
 });
 
 
-// Use these functions to show the respective windows
-function showMyComputer() {
-    showWindow(myComputerElement);
-}
-function hideMyComputer() {
-  myComputerElement.style.display = "none";
-}
-function closeMyComputer() {
-  myComputerElement.style.display = "none";
-  myComputerElement.style.top = "40%";
-  myComputerElement.style.left = "35%";
+const WINDOW_REGISTRY = {
+  myComputer: { defaultTop: '40%', defaultLeft: '35%' },
+  helpFolder: { defaultTop: '30%', defaultLeft: '50%' },
+  recycleBin: { defaultTop: '25%', defaultLeft: '55%' },
+};
+
+function showWindowById(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  showWindow(el);
 }
 
-
-function showHelpFolder() {
-  showWindow(helpFolderElement);
+function hideWindowById(id) {
+  resetPopupsAndOptions();
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = 'none';
 }
 
-function hideHelpFolder() {
-  helpFolderElement.style.display = "none";
+function closeWindowById(id) {
+  resetPopupsAndOptions();
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = 'none';
+  const config = WINDOW_REGISTRY[id];
+  if (config) {
+    el.style.top = config.defaultTop;
+    el.style.left = config.defaultLeft;
+  }
 }
 
-function closeHelpFolder() {
-  helpFolderElement.style.display = "none";
-  helpFolderElement.style.top = "30%";
-  helpFolderElement.style.left = "50%";
-}
+const WINDOW_ACTIONS = {
+  'show-window': showWindowById,
+  'hide-window': hideWindowById,
+  'close-window': closeWindowById,
+};
 
-
-function showRecycleBin() {
-    showWindow(recycleBinElement);
-}
-function hideRecycleBin() {
-  recycleBinElement.style.display = "none";
-}
-function closeRecycleBin() {
-  recycleBinElement.style.display = "none";
-  recycleBinElement.style.top = "25%";
-  recycleBinElement.style.left = "55%";
-}
+desktopElement.addEventListener('click', (e) => {
+  const trigger = e.target.closest('[data-action]');
+  if (!trigger) return;
+  const action = WINDOW_ACTIONS[trigger.dataset.action];
+  const id = trigger.dataset.window;
+  if (!action || !id) return;
+  e.preventDefault();
+  action(id);
+});
 
 var editPopupBinElement = document.getElementById('editPopupBin');
 var filePopupBinElement = document.getElementById('filePopupBin');
@@ -176,94 +173,45 @@ function togglePopup(popupElement, context) {
   }
 }
 
-// Updated toggle functions using the new togglePopup utility
-function toggleFilePopupBin() {
-  togglePopup(filePopupBinElement, this);
-}
-function toggleEditPopupBin() {
-  togglePopup(editPopupBinElement, this);
-}
-function toggleViewPopupBin() {
-  togglePopup(viewPopupBinElement, this);
-}
-function toggleHelpPopupBin() {
-  togglePopup(helpPopupBinElement, this);
-}
+document.querySelectorAll('.selectBar').forEach(bar => {
+  bar.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.selectOption[data-popup]');
+    if (!trigger) return;
+    const popup = document.getElementById(trigger.dataset.popup);
+    if (popup) togglePopup(popup, trigger);
+  });
+});
 
-
-function toggleFilePopupHelp() {
-  togglePopup(filePopupHelpElement, this);
-}
-
-function toggleEditPopupHelp() {
-  togglePopup(editPopupHelpElement, this);
-}
-
-function toggleViewPopupHelp() {
-  togglePopup(viewPopupHelpElement, this);
-}
-
-function toggleHelpPopupHelp() {
-  togglePopup(helpPopupHelpElement, this);
-}
-
-// Make all Window elements draggable:
 windows.forEach(dragElement);
 
 function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  var header = elmnt.querySelector(".windowHeader");
+  const handle = elmnt.querySelector(".windowHeader") || elmnt;
+  let startX = 0, startY = 0, startTop = 0, startLeft = 0;
 
-  if (header) {
-    // if present, the header is where you move the DIV from:
-    header.onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-  }
+  handle.addEventListener('pointerdown', onPointerDown);
 
-  function dragMouseDown(e) {
-    e = e || window.event;
+  function onPointerDown(e) {
+    if (e.button !== undefined && e.button !== 0) return;
     e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
+    startX = e.clientX;
+    startY = e.clientY;
+    startTop = elmnt.offsetTop;
+    startLeft = elmnt.offsetLeft;
+    handle.setPointerCapture(e.pointerId);
+    handle.addEventListener('pointermove', onPointerMove);
+    handle.addEventListener('pointerup', onPointerUp);
+    handle.addEventListener('pointercancel', onPointerUp);
   }
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  function onPointerMove(e) {
+    elmnt.style.top = (startTop + (e.clientY - startY)) + "px";
+    elmnt.style.left = (startLeft + (e.clientX - startX)) + "px";
   }
 
-  function closeDragElement() {
-    // stop moving when the mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
+  function onPointerUp(e) {
+    handle.releasePointerCapture(e.pointerId);
+    handle.removeEventListener('pointermove', onPointerMove);
+    handle.removeEventListener('pointerup', onPointerUp);
+    handle.removeEventListener('pointercancel', onPointerUp);
   }
 }
-
-// //"object(s)" counter
-// document.addEventListener("DOMContentLoaded", function() {
-//   // Select all elements with the class 'folderObject'
-//   var folderObjects = document.querySelectorAll('.folderObject');
-  
-//   // Count the elements
-//   var count = folderObjects.length;
-
-//   // Find the element with the class 'objectText' and update its text content
-//   var objectTextElement = document.querySelector('.objectText');
-//   if (objectTextElement) {
-//       objectTextElement.textContent = count + ' object(s)';
-//   }
-// });
