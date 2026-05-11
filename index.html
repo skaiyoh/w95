@@ -266,8 +266,18 @@
             <div>E</div>
         </div> -->
         <div class="activeApps">
-            <div id="startBarMyComputer"></div>
-            <div id="startBarRecycleBin"></div>
+            <button type="button" id="startBarMyComputer" class="taskbarButton is-hidden" data-window="myComputer">
+                <img src="assets\myComputer_32x32.svg" draggable="false">
+                <span data-label="My Computer">My Computer</span>
+            </button>
+            <button type="button" id="startBarHelpFolder" class="taskbarButton is-hidden" data-window="helpFolder">
+                <img src="assets\FolderOpen.svg" draggable="false">
+                <span data-label="Help">Help</span>
+            </button>
+            <button type="button" id="startBarRecycleBin" class="taskbarButton is-hidden" data-window="recycleBin">
+                <img src="assets\RecycleEmpty.svg" draggable="false">
+                <span data-label="Recycle Bin">Recycle Bin</span>
+            </button>
         </div>
         <div class="dateBox">
             <div class="speakerIcon">

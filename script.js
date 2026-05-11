@@ -62,6 +62,35 @@ var helpFolderElement = document.getElementById("helpFolder");
 // Taskbar sits at z-index 20 (style.css). Keep windows strictly below that.
 const WINDOW_Z_MAX = 19;
 
+let ACTIVE_WINDOW_ID = null;
+
+function getTaskbarButton(id) {
+  return document.getElementById('startBar' + id.charAt(0).toUpperCase() + id.slice(1));
+}
+
+function setActiveWindow(id) {
+  if (id === ACTIVE_WINDOW_ID) return;
+  if (ACTIVE_WINDOW_ID) {
+    const prev = getTaskbarButton(ACTIVE_WINDOW_ID);
+    if (prev) prev.classList.remove('is-active');
+  }
+  ACTIVE_WINDOW_ID = id;
+  if (id) {
+    const next = getTaskbarButton(id);
+    if (next) next.classList.add('is-active');
+  }
+}
+
+function showTaskbarButton(id) {
+  const btn = getTaskbarButton(id);
+  if (btn) btn.classList.remove('is-hidden');
+}
+
+function hideTaskbarButton(id) {
+  const btn = getTaskbarButton(id);
+  if (btn) btn.classList.add('is-hidden');
+}
+
 function focusWindow(target) {
     const others = Array.from(windows).filter(w => w !== target);
     others
@@ -69,6 +98,7 @@ function focusWindow(target) {
       .sort((a, b) => a.z - b.z)
       .forEach((entry, i) => { entry.el.style.zIndex = i + 1; });
     target.style.zIndex = WINDOW_Z_MAX;
+    setActiveWindow(target.id);
 }
 
 function updateZIndex(event) {
@@ -152,6 +182,7 @@ function showWindowById(id) {
     : getIconRectForWindow(id);
   const dst = measureWindowRect(el);
 
+  showTaskbarButton(id);
   ANIMATING_WINDOWS.add(id);
   runZoom(src, dst).then(() => {
     showWindow(el);
@@ -170,6 +201,7 @@ function hideWindowById(id) {
   const src = domRectToZoom(el.getBoundingClientRect());
   const dst = getTaskbarRectForWindow(id);
   el.style.display = 'none';
+  if (ACTIVE_WINDOW_ID === id) setActiveWindow(null);
 
   ANIMATING_WINDOWS.add(id);
   runZoom(src, dst).then(() => {
@@ -184,11 +216,27 @@ function closeWindowById(id) {
   if (!el) return;
   el.style.display = 'none';
   MINIMIZED_WINDOWS.delete(id);
+  if (ACTIVE_WINDOW_ID === id) setActiveWindow(null);
+  hideTaskbarButton(id);
   const config = WINDOW_REGISTRY[id];
   if (config) {
     el.style.top = config.defaultTop;
     el.style.left = config.defaultLeft;
   }
+}
+
+function handleTaskbarClick(id) {
+  if (ANIMATING_WINDOWS.has(id)) return;
+  if (MINIMIZED_WINDOWS.has(id)) {
+    showWindowById(id);
+    return;
+  }
+  if (ACTIVE_WINDOW_ID === id) {
+    hideWindowById(id);
+    return;
+  }
+  const el = document.getElementById(id);
+  if (el) focusWindow(el);
 }
 
 const WINDOW_ACTIONS = {
@@ -206,6 +254,16 @@ desktopElement.addEventListener('click', (e) => {
   e.preventDefault();
   action(id);
 });
+
+const activeAppsElement = document.querySelector('.activeApps');
+if (activeAppsElement) {
+  activeAppsElement.addEventListener('click', (e) => {
+    const btn = e.target.closest('.taskbarButton');
+    if (!btn) return;
+    const id = btn.dataset.window;
+    if (id) handleTaskbarClick(id);
+  });
+}
 
 var editPopupBinElement = document.getElementById('editPopupBin');
 var filePopupBinElement = document.getElementById('filePopupBin');

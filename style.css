@@ -472,7 +472,7 @@ div span::after {
     display: flex;
 }
 
-.activeApps > div {
+.taskbarButton {
     background-color: var(--primary);
     border-top: 1px solid var(--border--white);
     border-left: 1px solid var(--border--white);
@@ -480,11 +480,68 @@ div span::after {
     border-right: 1px solid black;
     box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
     cursor: pointer;
-    width: 200px;
+    width: 160px;
     height: 35px;
-    padding: 4px;
+    padding: 2px 4px;
     margin-right: 3px;
     margin-left: 3px;
+    font-family: "MS-sans-serif", sans-serif;
+    font-size: 0.85em;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.taskbarButton > img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.taskbarButton > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    line-height: 1.6;
+}
+
+.taskbarButton > span::after {
+    content: none;
+}
+
+.taskbarButton > span::before {
+    content: attr(data-label);
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-family: "MS-sans-serif-bold";
+    white-space: nowrap;
+}
+
+.taskbarButton.is-hidden {
+    display: none;
+}
+
+.taskbarButton.is-active {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid var(--border--white);
+    border-right: 1px solid var(--border--white);
+    box-shadow: inset 1px 1px 0 0 grey;
+    padding: 3px 3px 1px 5px;
+}
+
+.taskbarButton.is-active > span {
+    font-family: "MS-sans-serif-bold";
+    transform: translateY(-1px);
 }
 
 .startBarPopup {
