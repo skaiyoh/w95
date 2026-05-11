@@ -486,7 +486,7 @@ div span::after {
     margin-right: 3px;
     margin-left: 3px;
     font-family: "MS-sans-serif", sans-serif;
-    font-size: 0.85em;
+    font-size: 1em;
     color: black;
     display: flex;
     align-items: center;
@@ -541,7 +541,7 @@ div span::after {
 
 .taskbarButton.is-active > span {
     font-family: "MS-sans-serif-bold";
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 .startBarPopup {
