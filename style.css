@@ -56,7 +56,7 @@ div span::after {
     content: '';
     position: absolute;
     left: 0px;
-    bottom: 3px;
+    bottom: 0px;
     border-bottom: 1px solid currentColor;
     width: 85%;
 }
