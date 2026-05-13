@@ -21,10 +21,6 @@ A Windows 95-themed interactive portfolio built with vanilla HTML, CSS, and Java
 
 Open `index.html` in a browser. No build step required.
 
-## Screenshots
-
-![Desktop](https://raw.githubusercontent.com/skaiyoh/w95-portfolio/main/assets/myComputer_32x32.svg)
-
 ## License
 
 MIT
