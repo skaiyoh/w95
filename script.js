@@ -135,9 +135,9 @@ windows.forEach((win, i) => {
 
 
 const WINDOW_REGISTRY = {
-  myComputer: { defaultTop: '40%', defaultLeft: '35%' },
-  helpFolder: { defaultTop: '30%', defaultLeft: '50%' },
-  recycleBin: { defaultTop: '25%', defaultLeft: '55%' },
+  myComputer: { defaultTop: '40%', defaultLeft: '35%', defaultTransform: 'translate(-35%, -40%)' },
+  helpFolder: { defaultTop: '30%', defaultLeft: '50%', defaultTransform: 'translate(-50%, -30%)' },
+  recycleBin: { defaultTop: '25%', defaultLeft: '55%', defaultTransform: 'translate(-55%, -25%)' },
 };
 
 const MINIMIZED_WINDOWS = new Set();
@@ -244,6 +244,7 @@ function closeWindowById(id) {
   if (config) {
     el.style.top = config.defaultTop;
     el.style.left = config.defaultLeft;
+    el.style.transform = config.defaultTransform || '';
   }
 }
 
@@ -347,16 +348,24 @@ windows.forEach(dragElement);
 
 function dragElement(elmnt) {
   const handle = elmnt.querySelector(".windowHeader") || elmnt;
+  const startBar = document.querySelector('.startBar');
   let startX = 0, startY = 0, startTop = 0, startLeft = 0;
 
   handle.addEventListener('pointerdown', onPointerDown);
 
   function onPointerDown(e) {
     if (e.button !== undefined && e.button !== 0) return;
-    // Don't hijack pointerdown on the header's action buttons — preventDefault here
-    // suppresses the synthesized mouse click and breaks minimize/close on real mice.
     if (e.target.closest('.popupActionButtons')) return;
     e.preventDefault();
+
+    const computed = getComputedStyle(elmnt);
+    if (computed.transform && computed.transform !== 'none') {
+      const rect = elmnt.getBoundingClientRect();
+      elmnt.style.transform = 'none';
+      elmnt.style.top = rect.top + 'px';
+      elmnt.style.left = rect.left + 'px';
+    }
+
     startX = e.clientX;
     startY = e.clientY;
     startTop = elmnt.offsetTop;
@@ -368,8 +377,14 @@ function dragElement(elmnt) {
   }
 
   function onPointerMove(e) {
-    elmnt.style.top = (startTop + (e.clientY - startY)) + "px";
-    elmnt.style.left = (startLeft + (e.clientX - startX)) + "px";
+    const newTop = startTop + (e.clientY - startY);
+    const newLeft = startLeft + (e.clientX - startX);
+    const taskbarH = startBar ? startBar.offsetHeight : 0;
+    const maxTop = Math.max(0, window.innerHeight - taskbarH - elmnt.offsetHeight);
+    const maxLeft = Math.max(0, window.innerWidth - elmnt.offsetWidth);
+
+    elmnt.style.top = Math.max(0, Math.min(newTop, maxTop)) + "px";
+    elmnt.style.left = Math.max(0, Math.min(newLeft, maxLeft)) + "px";
   }
 
   function onPointerUp(e) {
