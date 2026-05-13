@@ -64,6 +64,18 @@ const WINDOW_Z_MAX = 19;
 
 let ACTIVE_WINDOW_ID = null;
 
+function getTopVisibleWindow(excludeId) {
+  let best = null;
+  let bestZ = -1;
+  windows.forEach(w => {
+    if (w.id === excludeId) return;
+    if (w.style.display === 'none') return;
+    const z = parseInt(w.style.zIndex, 10) || 0;
+    if (z > bestZ) { bestZ = z; best = w; }
+  });
+  return best;
+}
+
 function getTaskbarButton(id) {
   return document.getElementById('startBar' + id.charAt(0).toUpperCase() + id.slice(1));
 }
@@ -73,11 +85,15 @@ function setActiveWindow(id) {
   if (ACTIVE_WINDOW_ID) {
     const prev = getTaskbarButton(ACTIVE_WINDOW_ID);
     if (prev) prev.classList.remove('is-active');
+    const prevWin = document.getElementById(ACTIVE_WINDOW_ID);
+    if (prevWin) prevWin.classList.remove('is-active');
   }
   ACTIVE_WINDOW_ID = id;
   if (id) {
     const next = getTaskbarButton(id);
     if (next) next.classList.add('is-active');
+    const nextWin = document.getElementById(id);
+    if (nextWin) nextWin.classList.add('is-active');
   }
 }
 
@@ -201,7 +217,10 @@ function hideWindowById(id) {
   const src = domRectToZoom(el.getBoundingClientRect());
   const dst = getTaskbarRectForWindow(id);
   el.style.display = 'none';
-  if (ACTIVE_WINDOW_ID === id) setActiveWindow(null);
+  if (ACTIVE_WINDOW_ID === id) {
+    const next = getTopVisibleWindow(id);
+    setActiveWindow(next ? next.id : null);
+  }
 
   ANIMATING_WINDOWS.add(id);
   runZoom(src, dst).then(() => {
@@ -216,7 +235,10 @@ function closeWindowById(id) {
   if (!el) return;
   el.style.display = 'none';
   MINIMIZED_WINDOWS.delete(id);
-  if (ACTIVE_WINDOW_ID === id) setActiveWindow(null);
+  if (ACTIVE_WINDOW_ID === id) {
+    const next = getTopVisibleWindow(id);
+    setActiveWindow(next ? next.id : null);
+  }
   hideTaskbarButton(id);
   const config = WINDOW_REGISTRY[id];
   if (config) {
