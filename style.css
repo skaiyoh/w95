@@ -499,7 +499,7 @@ div span::after {
     border-right: 1px solid black;
     box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
     cursor: pointer;
-    width: 160px;
+    width: 200px;
     height: 35px;
     padding: 2px 4px;
     margin-right: 3px;
