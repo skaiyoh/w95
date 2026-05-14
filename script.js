@@ -298,8 +298,13 @@ var filePopupHelpElement =  document.getElementById('filePopupHelp');
 var viewPopupHelpElement =  document.getElementById('viewPopupHelp');
 var helpPopupHelpElement =  document.getElementById('helpPopupHelp');
 
+var editPopupMCElement = document.getElementById('editPopupMC');
+var filePopupMCElement = document.getElementById('filePopupMC');
+var viewPopupMCElement = document.getElementById('viewPopupMC');
+var helpPopupMCElement = document.getElementById('helpPopupMC');
+
 function resetPopupsAndOptions() {
-  var popups = [editPopupBinElement, filePopupBinElement, viewPopupBinElement, helpPopupBinElement, editPopupHelpElement, filePopupHelpElement, viewPopupHelpElement, helpPopupHelpElement];
+  var popups = [editPopupBinElement, filePopupBinElement, viewPopupBinElement, helpPopupBinElement, editPopupHelpElement, filePopupHelpElement, viewPopupHelpElement, helpPopupHelpElement, editPopupMCElement, filePopupMCElement, viewPopupMCElement, helpPopupMCElement];
   popups.forEach(function(popup) {
       popup.style.display = 'none';
   });

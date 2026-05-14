@@ -713,6 +713,53 @@ div span::after {
     display: none;
 }
 
+#filePopupMC {
+    display: none;
+    height: fit-content;
+    background-color: var(--primary);
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+}
+
+#editPopupMC {
+    display: none;
+    margin-left: 37px;
+    height: fit-content;
+    background-color: var(--primary);
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+}
+
+#viewPopupMC {
+    display: none;
+    margin-left: 75px;
+    height: fit-content;
+    background-color: var(--primary);
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+}
+
+#helpPopupMC {
+    display: none;
+    margin-left: 122.5px;
+    height: fit-content;
+    background-color: var(--primary);
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+}
+
 #filePopupBin {
     display: none;
     height: fit-content;

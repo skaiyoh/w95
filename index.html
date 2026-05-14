@@ -30,6 +30,47 @@
         </a>
     </div>
     <div class="window" id="myComputer">
+        <div class="selectBarPopups">
+            <div id="filePopupMC">
+                <div class="selectOption unavailable">Create <span>S</span>hortcut</div>
+                <div class="selectOption unavailable"><span>D</span>elete</div>
+                <div class="selectOption unavailable">Rena<span>m</span>e</div>
+                <div class="selectOption unavailable">P<span>r</span>operties</div>
+                <div class="divider"></div>
+                <div class="selectOption close"><span>C</span>lose</div>
+            </div>
+            <div id="editPopupMC">
+                <div class="selectOption unavailable"><span>U</span>ndo</div>
+                <div class="divider"></div>
+                <div class="selectOption unavailable">Cu<span>t</span></div>
+                <div class="selectOption unavailable"><span>C</span>opy</div>
+                <div class="selectOption unavailable"><span>P</span>aste</div>
+                <div class="selectOption unavailable">Paste <span>S</span>hortcut</div>
+                <div class="divider"></div>
+                <div class="selectOption">Select <span>A</span>ll</div>
+                <div class="selectOption"><span>I</span>nvert Selection</div>
+            </div>
+            <div id="viewPopupMC">
+                <div class="selectOption"><span>T</span>oolbar</div>
+                <div class="selectOption">Status <span>B</span>ar</div>
+                <div class="divider"></div>
+                <div class="selectOption">Lar<span>g</span>e Icons</div>
+                <div class="selectOption">S<span>m</span>all Icons</div>
+                <div class="selectOption"><span>L</span>ist</div>
+                <div class="selectOption"><span>D</span>etails</div>
+                <div class="divider"></div>
+                <div class="selectOption">Arrange <span>I</span>cons</div>
+                <div class="selectOption unavailable">Lin<span>e</span> up Icons</div>
+                <div class="divider"></div>
+                <div class="selectOption"><span>R</span>efresh</div>
+                <div class="selectOption"><span>O</span>ptions...</div>
+            </div>
+            <div id="helpPopupMC">
+                <div class="selectOption"><span>H</span>elp Topics</div>
+                <div class="divider"></div>
+                <div class="selectOption"><span>A</span>bout Windows 95</div>
+            </div>
+        </div>
         <div class="windowHeader">
             <div class="popupImage">
                 <img src="assets\myComputer_32x32.svg">
@@ -48,10 +89,10 @@
             </div>
         </div>
         <div class="selectBar">
-            <div><span>F</span>ile</div>
-            <div><span>E</span>dit</div>
-            <div><span>V</span>iew</div>
-            <div><span>H</span>elp</div>
+            <div class="selectOption" data-popup="filePopupMC"><span>F</span>ile</div>
+            <div class="selectOption" data-popup="editPopupMC"><span>E</span>dit</div>
+            <div class="selectOption" data-popup="viewPopupMC"><span>V</span>iew</div>
+            <div class="selectOption" data-popup="helpPopupMC"><span>H</span>elp</div>
         </div>
         <div class="folders">
             <div class="line-1">
