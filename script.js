@@ -326,6 +326,9 @@ function togglePopup(popupElement, context) {
       // If it was active, it's now been turned off by resetPopupsAndOptions, so do nothing more
   } else {
       // If it wasn't active, display it and mark as active
+      var triggerLeft = context.getBoundingClientRect().left;
+      var parentLeft = context.parentElement.getBoundingClientRect().left;
+      popupElement.style.marginLeft = (triggerLeft - parentLeft) + 'px';
       popupElement.style.display = 'block';
       context.classList.add('selectOptionActive');
   }
