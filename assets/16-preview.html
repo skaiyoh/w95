@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>16x16 Audit</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #c0c0c0; padding: 20px; }
+  h1 { font-size: 16px; margin: 0 0 16px; }
+  .row { display: flex; flex-wrap: wrap; gap: 24px; }
+  .cell {
+    background: #fff;
+    border: 1px solid #888;
+    padding: 8px;
+    width: 200px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .cell .label { margin-bottom: 6px; font-weight: bold; }
+  .pair { display: flex; gap: 8px; align-items: flex-end; justify-content: center; }
+  .pair > div { text-align: center; }
+  .pair img {
+    image-rendering: pixelated;
+    background: repeating-conic-gradient(#eee 0% 25%, #fff 0% 50%) 50%/8px 8px;
+    border: 1px solid #aaa;
+  }
+  .src img { width: 64px; height: 64px; }
+  .dst img { width: 64px; height: 64px; }
+  .pair small { display: block; font-size: 10px; color: #666; margin-top: 2px; }
+</style>
+</head>
+<body>
+<h1>16&times;16 downsample audit &mdash; left: 32&times;32 source, right: 16&times;16 PNG (both shown 4x)</h1>
+<div class="row" id="grid"></div>
+<script>
+  const names = ["Computer","ControlPanel","Documents","FileFind","Folder","FolderOpen","FolderPrinter","HelpBook","Loader","Logo","MyComputer","Notepad","Programs","ReaderClosed","ReaderOpened","RecycleEmpty","Settings","Speaker"];
+  const grid = document.getElementById('grid');
+  for (const n of names) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.innerHTML = `
+      <div class="label">${n}</div>
+      <div class="pair">
+        <div class="src"><img src="${n}.svg"><small>source</small></div>
+        <div class="dst"><img src="16/${n}.png"><small>16&times;16</small></div>
+      </div>`;
+    grid.appendChild(cell);
+  }
+</script>
+</body>
+</html>

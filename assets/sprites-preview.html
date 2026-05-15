@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sprite Preview</title>
+<link rel="stylesheet" href="sprites.css">
+<style>
+  body { font-family: system-ui, sans-serif; background: #c0c0c0; padding: 20px; }
+  h1 { font-size: 16px; margin: 24px 0 12px; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; }
+  .cell {
+    background: #fff;
+    border: 1px solid #888;
+    padding: 8px;
+    width: 110px;
+    text-align: center;
+    font-size: 11px;
+  }
+  .cell .label { margin-bottom: 6px; font-weight: bold; word-break: break-all; }
+  .cell .icon-wrap {
+    background: repeating-conic-gradient(#eee 0% 25%, #fff 0% 50%) 50%/8px 8px;
+    padding: 8px;
+    display: inline-block;
+    border: 1px solid #aaa;
+  }
+  /* render the sprite icons scaled up so detail is visible */
+  .show32 { transform: scale(2); transform-origin: center; margin: 16px; }
+  .show16 { transform: scale(4); transform-origin: center; margin: 24px; }
+  .raw { margin: 16px 0; }
+  .raw img { background: repeating-conic-gradient(#eee 0% 25%, #fff 0% 50%) 50%/8px 8px; image-rendering: pixelated; border: 1px solid #888; }
+</style>
+</head>
+<body>
+  <h1>The sheets themselves (1x)</h1>
+  <div class="raw">
+    <img src="sprite-32.png" alt="32x32 sprite"> &nbsp;
+    <img src="sprite-16.png" alt="16x16 sprite">
+  </div>
+
+  <h1>32&times;32 sprite (shown 2x)</h1>
+  <div class="row" id="grid32"></div>
+
+  <h1>16&times;16 sprite (shown 4x)</h1>
+  <div class="row" id="grid16"></div>
+
+  <script>
+    const names = ["Computer","ControlPanel","Documents","FileFind","Folder","FolderOpen","FolderPrinter","HelpBook","Loader","Logo","MyComputer","Notepad","Programs","ReaderClosed","ReaderOpened","RecycleEmpty","Settings","Speaker"];
+    for (const n of names) {
+      document.getElementById('grid32').insertAdjacentHTML('beforeend',
+        `<div class="cell"><div class="label">${n}</div><div class="icon-wrap"><i class="sprite32 sprite32-${n} show32"></i></div></div>`);
+      document.getElementById('grid16').insertAdjacentHTML('beforeend',
+        `<div class="cell"><div class="label">${n}</div><div class="icon-wrap"><i class="sprite16 sprite16-${n} show16"></i></div></div>`);
+    }
+  </script>
+</body>
+</html>

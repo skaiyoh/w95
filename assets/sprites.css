@@ -1,0 +1,61 @@
+/* Icon sprite sheets — use with: <i class="sprite32 sprite32-Computer"></i> */
+
+.sprite32 {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url("sprite-32.png");
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.sprite16 {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("sprite-16.png");
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* 32x32 sheet — 6 cols x 3 rows, alphabetical */
+.sprite32-Computer       { background-position:    0px    0px; }
+.sprite32-ControlPanel   { background-position:  -32px    0px; }
+.sprite32-Documents      { background-position:  -64px    0px; }
+.sprite32-FileFind       { background-position:  -96px    0px; }
+.sprite32-Folder         { background-position: -128px    0px; }
+.sprite32-FolderOpen     { background-position: -160px    0px; }
+.sprite32-FolderPrinter  { background-position:    0px  -32px; }
+.sprite32-HelpBook       { background-position:  -32px  -32px; }
+.sprite32-Loader         { background-position:  -64px  -32px; }
+.sprite32-Logo           { background-position:  -96px  -32px; }
+.sprite32-MyComputer     { background-position: -128px  -32px; }
+.sprite32-Notepad        { background-position: -160px  -32px; }
+.sprite32-Programs       { background-position:    0px  -64px; }
+.sprite32-ReaderClosed   { background-position:  -32px  -64px; }
+.sprite32-ReaderOpened   { background-position:  -64px  -64px; }
+.sprite32-RecycleEmpty   { background-position:  -96px  -64px; }
+.sprite32-Settings       { background-position: -128px  -64px; }
+.sprite32-Speaker        { background-position: -160px  -64px; }
+
+/* 16x16 sheet — 6 cols x 3 rows, alphabetical */
+.sprite16-Computer       { background-position:    0px    0px; }
+.sprite16-ControlPanel   { background-position:  -16px    0px; }
+.sprite16-Documents      { background-position:  -32px    0px; }
+.sprite16-FileFind       { background-position:  -48px    0px; }
+.sprite16-Folder         { background-position:  -64px    0px; }
+.sprite16-FolderOpen     { background-position:  -80px    0px; }
+.sprite16-FolderPrinter  { background-position:    0px  -16px; }
+.sprite16-HelpBook       { background-position:  -16px  -16px; }
+.sprite16-Loader         { background-position:  -32px  -16px; }
+.sprite16-Logo           { background-position:  -48px  -16px; }
+.sprite16-MyComputer     { background-position:  -64px  -16px; }
+.sprite16-Notepad        { background-position:  -80px  -16px; }
+.sprite16-Programs       { background-position:    0px  -32px; }
+.sprite16-ReaderClosed   { background-position:  -16px  -32px; }
+.sprite16-ReaderOpened   { background-position:  -32px  -32px; }
+.sprite16-RecycleEmpty   { background-position:  -48px  -32px; }
+.sprite16-Settings       { background-position:  -64px  -32px; }
+.sprite16-Speaker        { background-position:  -80px  -32px; }
