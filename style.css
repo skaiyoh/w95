@@ -269,7 +269,7 @@ div span::after {
 .popupActionButtons > a > div {
     background-color: var(--primary);
     color: black;
-    width: 30px;
+    width: 32px;
     height: 28px;
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
@@ -288,7 +288,7 @@ div span::after {
     position: absolute;
     bottom: 4px;
     left: 6px;
-    width: 10px;
+    width: 12px;
     height: 4px;
     background-color: black;
 }
@@ -302,7 +302,7 @@ div span::after {
     position: absolute;
     top: 2px;
     left: 4px;
-    width: 12px;
+    width: 14px;
     height: 12px;
     border: 2px solid black;
     border-top-width: 4px;
@@ -318,7 +318,7 @@ div span::after {
     content: '';
     position: absolute;
     top: 13px;
-    left: 12px;
+    left: 14px;
     width: 2px;
     height: 2px;
     margin-top: -9px;
