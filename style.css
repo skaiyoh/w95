@@ -144,11 +144,17 @@ div span::after {
 
 .selectBarPopups > div {
     width: auto;
+    padding-bottom: 3px;
+    padding-top: 2px;
 }
 
 .selectOption {
     padding: 4.5px 30px 2.5px 30px;
     width: auto;
+}
+
+.selectBarPopups .selectOption {
+    margin: 0 3px 0 2px;
 }
 
 .selectOption:hover {
