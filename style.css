@@ -46,6 +46,8 @@ img {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+    image-rendering: pixelated;       /* Chrome, Edge, Safari */
+    image-rendering: crisp-edges;     /* Firefox */
 }
 
 div span {
@@ -236,16 +238,14 @@ div span::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 16px;
-    height: 16px;
-    margin-left: 5px;
-    margin-right: 5px;
+    width: 28px;
+    height: 28px;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .popupImage > img {
     display: block;
-    width: 16px;
-    height: 16px;
 }
 
 .popupTitle {
