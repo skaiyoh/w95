@@ -25,6 +25,7 @@
 
 body {
     font-family: "MS-sans-serif";
+    font-size: 22px;
     background-color: var(--secondary);
     overflow: hidden;
     margin: 0;
@@ -36,7 +37,7 @@ a {
 }
 
 h1 {
-    font-size: 0.7em;
+    font-size: 11px;
     letter-spacing: 1.6px;
     font-weight: 600;
     -webkit-text-stroke: 0.15px black;
@@ -126,7 +127,7 @@ div span::after {
 
 .selectBar > div {
     padding: 0px 8px 0px 8px;
-    font-size: 0.9em;
+    font-size: 22px;
     padding-top: 6px;
     height: 100%;
 }
@@ -136,7 +137,7 @@ div span::after {
     position: absolute;
     width: auto;
     margin-top: 52px;
-    font-size: 0.9em;
+    font-size: 22px;
 }
 
 .selectBarPopups > div .divider {
@@ -193,7 +194,7 @@ div span::after {
     border-bottom: 2px solid var(--border--white);
     border-right: 2px solid var(--border--white);
     flex-grow: 1;
-    font-size: 0.8em;
+    font-size: 22px;
     overflow: auto;
     padding: 2px 0px 0px 2px;
     box-shadow:
@@ -231,7 +232,7 @@ div span::after {
 }
 
 .folderObject {
-    font-size: 1em;
+    font-size: 22px;
 }
 
 .popupImage {
@@ -251,7 +252,7 @@ div span::after {
 .popupTitle {
     font-family: "MS-sans-serif-bold";
     color: white;
-    font-size: 0.9em;
+    font-size: 22px;
     padding-bottom: 4pt;
 }
 
@@ -361,7 +362,7 @@ div span::after {
     align-items: center;
     height: 28px;
     width: 100%;
-    font-size: 0.8em;
+    font-size: 22px;
     padding-top: 4px;
 }
 
@@ -417,7 +418,7 @@ div span::after {
     color: var(--white);
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 1em;
+    font-size: 22px;
     font-weight: 100;
 }
 
@@ -471,7 +472,7 @@ div span::after {
 
 .startText {
     font-family: "MS-sans-serif-bold";
-    font-size: 1em;
+    font-size: 22px;
     letter-spacing: 1px;
     padding-bottom: 4pt;
     -webkit-user-select: none; /* Safari */
@@ -516,7 +517,7 @@ div span::after {
     margin-right: 3px;
     margin-left: 3px;
     font-family: "MS-sans-serif", sans-serif;
-    font-size: 1em;
+    font-size: 22px;
     color: black;
     display: flex;
     align-items: center;
@@ -608,7 +609,7 @@ div span::after {
 
 .startPopupBtn > div {
     padding-top: 3pt;
-    font-size: 1em;
+    font-size: 22px;
     letter-spacing: 1px;
 }
 
@@ -643,7 +644,7 @@ div span::after {
 .display-time {
     text-align: center;
     padding-top: 2pt;
-    font-size: 0.85em;
+    font-size: 22px;
     margin-right: 4px;
 }
 
