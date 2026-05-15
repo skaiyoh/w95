@@ -53,15 +53,17 @@ img {
 
 div span {
     position: relative;
+    margin-right: 2px;
 }
 
 div span::after {
     content: '';
     position: absolute;
-    left: 0px;
+    left: -2px;
     bottom: 0px;
-    border-bottom: 1px solid currentColor;
-    width: 85%;
+    border-bottom: 2px solid currentColor;
+    width: 100%;
+    padding-right: 2px;
 }
 
 .block {
@@ -122,13 +124,12 @@ div span::after {
     display: flex;
     align-items: center;
     background-color: var(--primary);
-    height: 27px;
+    height: 40px;
 }
 
 .selectBar > div {
-    padding: 0px 8px 0px 8px;
+    padding: 8px 8px 0px 12px;
     font-size: 22px;
-    padding-top: 6px;
     height: 100%;
 }
 
@@ -253,7 +254,7 @@ div span::after {
     font-family: "MS-sans-serif-bold";
     color: white;
     font-size: 22px;
-    padding-bottom: 4pt;
+    padding-bottom: 6pt;
 }
 
 .popupActionButtons {
@@ -360,7 +361,7 @@ div span::after {
 .objectsDisplayBox {
     display: flex;
     align-items: center;
-    height: 28px;
+    height: 38px;
     width: 100%;
     font-size: 22px;
     padding-top: 4px;
@@ -374,28 +375,21 @@ div span::after {
     border-left: 2px solid var(--border--grey);
     border-bottom: 2px solid var(--border--white);
     border-right: 2px solid var(--border--white);
-    padding-left: 4px;
+    padding-left: 8px;
 }
 
 .objectText {
     margin-right: 3px;
     width: 75%;
     max-width: 250px;
-    height: 24px;
-    padding-top: 3pt;
+    height: 100%;
+    padding-top: 2pt;
 }
 
 .byteText {
-    display: flex;
-    align-items: center;
-    background-color: var(--primary);
-    border-top: 2px solid var(--border--grey);
-    border-left: 2px solid var(--border--grey);
-    border-bottom: 2px solid var(--border--white);
-    border-right: 2px solid var(--border--white);
-    height: 24px;
     flex-grow: 1;
-    padding-top: 3pt;
+    height: 100%;
+    padding-top: 2pt;
 }
 
 .icons {
@@ -670,8 +664,8 @@ div span::after {
 
 .sortingBar {
     display: flex;
-    height: 24px;
-    width: 620px;
+    height: 34px;
+    width: max-content;
 }
 
 .sortingBar > div {
@@ -682,13 +676,14 @@ div span::after {
     border-right: 2px solid black;
     box-shadow: inset -2px -2px 0 0 grey;
     padding-left: 8px;
-    padding-top: 3pt;
+    padding-top: 2pt;
     padding-right: 20px;
-    width: 140px;
+    width: 230px;
+    padding-bottom: 2px;
 }
 
 .sortingBar > div:last-of-type {
-    width: 60px;
+    width: 90px;
     border-right: none;
     text-align: right;
     padding-right: 4px;
@@ -699,8 +694,8 @@ div span::after {
     top: 40%;
     left: 35%;
     transform: translate(-35%, -40%);
-    width: 320px;
-    height: 320px;
+    width: 400px;
+    height: 400px;
     display: none;
 }
 
@@ -720,8 +715,8 @@ div span::after {
     top: 25%;
     left: 55%;
     transform: translate(-55%, -25%);
-    width: 320px;
-    height: 280px;
+    width: 400px;
+    height: 400px;
     display: none;
 }
 
