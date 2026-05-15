@@ -23,10 +23,10 @@ var desktopElement = document.querySelector(".desktop");
 function toggleStyles() {
   if (startBarPopupElement.style.display === 'none') {
     startBarPopupElement.style.display = 'block';
-    applyStyles("1px solid black", "1px solid black", "1px solid white", "1px solid white", "inset 1px 1px 0 0 grey, inset 1px 1px 0 0 grey");
+    applyStyles("2px solid black", "2px solid black", "2px solid white", "2px solid white", "inset 2px 2px 0 0 grey");
   } else {
     startBarPopupElement.style.display = 'none';
-    applyStyles("1px solid white", "1px solid white", "1px solid black", "1px solid black", "inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey");
+    applyStyles("2px solid white", "2px solid white", "2px solid black", "2px solid black", "inset -2px -2px 0 0 grey");
   }
 }
 

@@ -75,12 +75,14 @@ div span::after {
     display: flex;
     flex-direction: column;
     background-color: var(--primary);
-    border-top: 2px solid var(--border--white);
-    border-left: 2px solid var(--border--white);
+    border-top: 2px solid var(--primary);
+    border-left: 2px solid var(--primary);
     border-bottom: 2px solid black;
     border-right: 2px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
-    padding: 3px;
+    box-shadow:
+            inset 2px 2px 0 0 var(--border--white),
+            inset -2px -2px 0 0 grey;
+    padding: 6px;
 }
 
 .windowWrapper {
@@ -104,7 +106,7 @@ div span::after {
     background-color: var(--unavailable);
     color: #fff;
     width: 100%;
-    height: 25px;
+    height: 36px;
     touch-action: none;
 }
 
@@ -136,10 +138,10 @@ div span::after {
 }
 
 .selectBarPopups > div .divider {
-    height: 6px;
+    height: 8px;
     margin-top: 3px;
     box-shadow: inset 0 2px 0 0 var(--border--white);
-    border-top: 1px solid grey;
+    border-top: 2px solid grey;
 }
 
 .selectBarPopups > div {
@@ -192,7 +194,9 @@ div span::after {
     font-size: 0.8em;
     overflow: auto;
     padding: 2px 0px 0px 2px;
-    box-shadow: inset 1px 1px 0px 1px black;
+    box-shadow:
+            inset 2px 2px 0 0 black,
+            inset -2px -2px 0 0 var(--primary);
 }
 
 .line-1 {
@@ -253,7 +257,8 @@ div span::after {
 
 .popupActionButtons {
     display: flex;
-    height: 16px;
+    align-items: center;
+    height: 100%;
     margin-left: auto;
 }
 
@@ -264,12 +269,13 @@ div span::after {
 .popupActionButtons > a > div {
     background-color: var(--primary);
     color: black;
-    width: 16px;
-    height: 16px;
-    border-top: 1px solid var(--border--white);
-    border-left: 1px solid var(--border--white);
-    border-bottom: 1px solid var(--border--grey);
-    border-right: 1px solid var(--border--grey);
+    width: 30px;
+    height: 28px;
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 var(--border--grey);
 
 }
 
@@ -280,15 +286,14 @@ div span::after {
 .minimize::before {
     content: '';
     position: absolute;
-    bottom: 2px;
-    left: 3px;
-    width: 8px;
-    height: 2px;
+    bottom: 4px;
+    left: 6px;
+    width: 10px;
+    height: 4px;
     background-color: black;
 }
 
 .fullscreen {
-    margin-left: 1px;
     position: relative;
 }
 
@@ -296,44 +301,43 @@ div span::after {
     content: '';
     position: absolute;
     top: 2px;
-    left: 2px;
-    width: 8px;
-    height: 7px;
-    border: 1px solid black;
-    border-top-width: 2px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid black;
+    border-top-width: 4px;
 }
 
 .closePopup {
     position: relative;
-    margin-left: 5px;
+    margin-left: 4px;
     margin-right: 4px;
 }
 
-.closePopup::before,
-.closePopup::after {
+.closePopup::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 12px;
-    height: 1.5px;
+    top: 13px;
+    left: 12px;
+    width: 2px;
+    height: 2px;
+    margin-top: -9px;
+    margin-left: -8px;
     background-color: black;
-}
-
-.closePopup::before {
-    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow:
+            2px 0 0 0 black, 2px 2px 0 0 black, 4px 2px 0 0 black, 4px 4px 0 0 black, 6px 4px 0 0 black, 8px 4px 0 0 black, 10px 4px 0 0 black, 10px 2px 0px 0 black, 12px 2px 0 0 black, 12px 0px 0 0 black, 14px 0px 0 0 black, 6px 6px 0 0 black, 8px 6px 0 0 black, 6px 8px 0 0 black, 8px 8px 0 0 black, 4px 8px 0 0 black, 10px 8px 0 0 black, 4px 10px 0 0 black, 2px 10px 0 0 black, 10px 10px 0 0 black, 12px 10px 0 0 black, 2px 12px 0 0 black, 12px 12px 0 0 black, 0 12px 0 0 black, 14px 12px 0 0 black;
 }
 
 .closePopup::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+    content: none;
 }
 
 .popupActionButtons > a:active > div {
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid var(--border--white);
-    border-right: 1px solid var(--border--white);
-    box-shadow: inset 1px 1px 0 0 var(--border--grey);
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom: 2px solid var(--border--white);
+    border-right: 2px solid var(--border--white);
+    box-shadow: inset 2px 2px 0 0 var(--border--grey);
 }
 
 .popupActionButtons > a:active .minimize::before {
@@ -358,16 +362,17 @@ div span::after {
     height: 28px;
     width: 100%;
     font-size: 0.8em;
+    padding-top: 4px;
 }
 
 .objectsDisplayBox > div {
     display: flex;
     align-items: center;
     background-color: var(--primary);
-    border-top: 1px solid var(--border--grey);
-    border-left: 1px solid var(--border--grey);
-    border-bottom: 1px solid var(--border--white);
-    border-right: 1px solid var(--border--white);
+    border-top: 2px solid var(--border--grey);
+    border-left: 2px solid var(--border--grey);
+    border-bottom: 2px solid var(--border--white);
+    border-right: 2px solid var(--border--white);
     padding-left: 4px;
 }
 
@@ -383,10 +388,10 @@ div span::after {
     display: flex;
     align-items: center;
     background-color: var(--primary);
-    border-top: 1px solid var(--border--grey);
-    border-left: 1px solid var(--border--grey);
-    border-bottom: 1px solid var(--border--white);
-    border-right: 1px solid var(--border--white);
+    border-top: 2px solid var(--border--grey);
+    border-left: 2px solid var(--border--grey);
+    border-bottom: 2px solid var(--border--white);
+    border-right: 2px solid var(--border--white);
     height: 24px;
     flex-grow: 1;
     padding-top: 3pt;
@@ -447,20 +452,20 @@ div span::after {
     width: fit-content;
     height: 35px;
     padding: 4px;
-    border-top: 1px solid var(--border--white);
-    border-left: 1px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
     cursor: pointer;
 }
 
 .startButton:active {
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid var(--border--white);
-    border-right: 1px solid var(--border--white);
-    box-shadow: inset 1px 1px 0 0 grey;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom: 2px solid var(--border--white);
+    border-right: 2px solid var(--border--white);
+    box-shadow: inset 2px 2px 0 0 grey;
     padding: 5px 3px 3px 5px;
 }
 
@@ -499,11 +504,11 @@ div span::after {
 
 .taskbarButton {
     background-color: var(--primary);
-    border-top: 1px solid var(--border--white);
-    border-left: 1px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
     cursor: pointer;
     width: 200px;
     height: 35px;
@@ -557,11 +562,11 @@ div span::after {
 }
 
 .taskbarButton.is-active {
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid var(--border--white);
-    border-right: 1px solid var(--border--white);
-    box-shadow: inset 1px 1px 0 0 grey;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom: 2px solid var(--border--white);
+    border-right: 2px solid var(--border--white);
+    box-shadow: inset 2px 2px 0 0 grey;
     padding: 3px 3px 1px 5px;
 }
 
@@ -580,13 +585,13 @@ div span::after {
     margin-left: 2px;
     padding: 2px;
     z-index: 100;
-    border-top: 1px solid var(--border--white);
-    border-left: 1px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
 
     /* Additional borders for the inside */
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 .startPopupBtn {
@@ -613,10 +618,10 @@ div span::after {
 }
 
 .divider {
-    height: 10px;
+    height: 12px;
     margin-top: 5px;
-    box-shadow: inset 0 1px 0 0 var(--border--white);
-    border-top: 1px solid grey;
+    box-shadow: inset 0 2px 0 0 var(--border--white);
+    border-top: 2px solid grey;
 }
 
 .w95VertBar {
@@ -629,10 +634,10 @@ div span::after {
     height: 100%;
     margin-left: auto;
     padding: 4px;
-    border-top: 1px solid var(--border--grey);
-    border-left: 1px solid var(--border--grey);
-    border-bottom: 1px solid var(--border--white);
-    border-right: 1px solid var(--border--white);
+    border-top: 2px solid var(--border--grey);
+    border-left: 2px solid var(--border--grey);
+    border-bottom: 2px solid var(--border--white);
+    border-right: 2px solid var(--border--white);
 }
 
 .display-time {
@@ -670,11 +675,11 @@ div span::after {
 
 .sortingBar > div {
     background-color: var(--primary);
-    border-top: 1px solid var(--border--white);
-    border-left: 1px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-top: 2px solid var(--border--white);
+    border-left: 2px solid var(--border--white);
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
     padding-left: 8px;
     padding-top: 3pt;
     padding-right: 20px;
@@ -725,9 +730,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #editPopupMC {
@@ -736,9 +741,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #viewPopupMC {
@@ -747,9 +752,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #helpPopupMC {
@@ -758,9 +763,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #filePopupBin {
@@ -769,9 +774,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #editPopupBin {
@@ -780,9 +785,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #viewPopupBin {
@@ -791,9 +796,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #helpPopupBin {
@@ -802,9 +807,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #filePopupHelp {
@@ -813,9 +818,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #editPopupHelp {
@@ -824,9 +829,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #viewPopupHelp {
@@ -835,9 +840,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #helpPopupHelp {
@@ -846,9 +851,9 @@ div span::after {
     background-color: var(--primary);
     border-top: 2px solid var(--border--white);
     border-left: 2px solid var(--border--white);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    box-shadow: inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset -2px -2px 0 0 grey;
 }
 
 #findFile > img {
@@ -858,7 +863,7 @@ div span::after {
 
 .w95-zoom-frame {
     position: fixed;
-    border: 1px solid white;
+    border: 2px solid white;
     box-sizing: border-box;
     pointer-events: none;
     mix-blend-mode: difference;
@@ -872,4 +877,3 @@ div span::after {
     cursor: wait;
     background: transparent;
 }
-
