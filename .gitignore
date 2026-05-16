@@ -3,3 +3,6 @@ master_sprite.png
 
 .idea/
 *.iml
+
+# macOS
+.DS_Store
