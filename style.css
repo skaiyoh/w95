@@ -247,8 +247,10 @@ div span::after {
 }
 
 .popupImage > img {
-    width: 64px;
-    height: 64px;
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 .popupImage > img {
@@ -531,10 +533,12 @@ div span::after {
 }
 
 .taskbarButton > img {
-    width: 64px;
-    height: 64px;
+    width: 32px;
+    height: 32px;
     flex-shrink: 0;
     pointer-events: none;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 .taskbarButton > span {
@@ -657,9 +661,11 @@ div span::after {
 .logo img {
     display: flex;
     align-items: center;
-    width: 60px;
-    height: 44px;
+    width: 32px;
+    height: 32px;
     margin-right: 3px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 .speakerIcon {
@@ -670,8 +676,10 @@ div span::after {
 }
 
 .speakerIcon > img {
-    width: 64px;
-    height: 64px;
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 .recycleBinObjects {
