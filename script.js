@@ -20,22 +20,35 @@ var startButtonElement = document.getElementById("startButton");
 var desktopElement = document.querySelector(".desktop");
 
 
+// Win95 bevel states for the Start button (inline styles override style.css).
+const PRESSED = {
+  borderTop: "2px solid black",
+  borderLeft: "2px solid black",
+  borderBottom: "2px solid white",
+  borderRight: "2px solid white",
+  boxShadow: "inset 2px 2px 0 0 grey",
+};
+
+const RAISED = {
+  borderTop: "2px solid white",
+  borderLeft: "2px solid white",
+  borderBottom: "2px solid black",
+  borderRight: "2px solid black",
+  boxShadow: "inset -2px -2px 0 0 grey",
+};
+
 function toggleStyles() {
   if (startBarPopupElement.style.display === 'none') {
     startBarPopupElement.style.display = 'block';
-    applyStyles("2px solid black", "2px solid black", "2px solid white", "2px solid white", "inset 2px 2px 0 0 grey");
+    applyStyles(PRESSED);
   } else {
     startBarPopupElement.style.display = 'none';
-    applyStyles("2px solid white", "2px solid white", "2px solid black", "2px solid black", "inset -2px -2px 0 0 grey");
+    applyStyles(RAISED);
   }
 }
 
-function applyStyles(top, left, bottom, right, boxShadow) {
-  startButtonElement.style.borderTop = top;
-  startButtonElement.style.borderLeft = left;
-  startButtonElement.style.borderBottom = bottom;
-  startButtonElement.style.borderRight = right;
-  startButtonElement.style.boxShadow = boxShadow;
+function applyStyles(style) {
+  Object.assign(startButtonElement.style, style);
 }
 
 // Add click event listener to the start button
@@ -44,7 +57,7 @@ startButtonElement.addEventListener('click', toggleStyles);
 // Add click event listener to the body to hide the target element
 desktopElement.addEventListener('click', function () {
   startBarPopupElement.style.display = 'none';
-  applyStyles("1px solid white", "1px solid white", "1px solid black", "1px solid black", "inset -1px -1px 0 0 grey, inset -1px -1px 0 0 grey");
+  applyStyles(RAISED);
 });
 
 // Stop propagation of click events on the button to prevent hiding immediately after showing
