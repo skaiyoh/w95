@@ -518,7 +518,6 @@ div span::after {
     box-shadow: inset -2px -2px 0 0 grey;
     cursor: pointer;
     width: 240px;
-    height: 70px;
     padding: 2px 4px;
     margin-right: 3px;
     margin-left: 3px;
@@ -530,6 +529,7 @@ div span::after {
     gap: 4px;
     text-align: left;
     overflow: hidden;
+    height: 44px;
 }
 
 .taskbarButton > img {
@@ -539,6 +539,8 @@ div span::after {
     pointer-events: none;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 .taskbarButton > span {
