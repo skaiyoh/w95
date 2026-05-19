@@ -576,7 +576,6 @@ div span::after {
     border-bottom: 2px solid var(--border--white);
     border-right: 2px solid var(--border--white);
     box-shadow: inset 2px 2px 0 0 grey;
-    padding: 3px 3px 1px 5px;
 }
 
 .taskbarButton.is-active > span {
