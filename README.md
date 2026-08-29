@@ -1,6 +1,8 @@
-# W95 Interactive Portfolio
+# w95
 
-A Windows 95-themed interactive portfolio built with vanilla HTML, CSS, and JavaScript. Features a fully functional desktop environment with draggable windows, a working Start menu, taskbar, and system clock.
+A recreation of the Windows 95 desktop in vanilla HTML, CSS, and JavaScript — no frameworks, no build step. Draggable windows, a working Start menu, taskbar, and system clock, styled to match the original pixel for pixel.
+
+There may be a few things hidden in here.
 
 ## Features
 
